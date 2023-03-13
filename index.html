@@ -11,13 +11,87 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/styles.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Hello, world and let's dance))</h1>
+      <div class="weather-block">
+        <section class="current row">
+          <div class="col-md-6 current-city">
+            <div class="city">
+              <h1>in <span>City</span></h1>
+            </div>
 
-      <a href="" class="btn btn-primary">Click on me</a>
+            <div class="search-engine">
+              <ul class="list">
+                <li>change city</li>
+                <li>current position</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-3 current-parameters">
+            <p>now is</p>
+            <p><span class="current week-day">Friday</span></p>
+            <p><span class="current-time">12:56</span></p>
+
+            <ul class="list">
+              <li>precipitation:</li>
+              <li>humidity:</li>
+              <li>wind:</li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 current-weather">
+            <div class="weather">
+              <img class="weather-icon" alt="weather-icon" width="50%" />
+              <p>6C</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="graphics"></section>
+
+        <section class="week-weather"></section>
+      </div>
+
+      <footer>
+        <small>
+          The project was coded by
+          <a
+            href="https://www.facebook.com/xlapushka"
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+            class="link"
+          >
+            xlapushka</a
+          >
+          and is
+          <a
+            href="https://github.com/xlapushka"
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+            class="link"
+          >
+            open-sourced on GitHub</a
+          >
+          and
+          <a
+            href="https://www.facebook.com/xlapushka"
+            target="_blank"
+            rel="noopener nofollow noreferrer"
+            class="link"
+          >
+            hosted on Netlify</a
+          >
+        </small>
+      </footer>
     </div>
     <script src="./src/script.js"></script>
   </body>

@@ -1,8 +1,105 @@
-h1 {
-  color: yellowgreen;
-  font-weight: 800
+:root {
+  --body-background: #f0f2f5;
+  --weather-block-background: white;
+  --body-text: #212529;
+  --body-text-lighter: #66717c;
+  --link-color: #166fe5;
+  --border: lightgray;
+}
+
+html {
+  box-sizing: border-box;
 }
 
 body {
-  background-color: ivory;
+  margin: 0;
+
+  background-color: var(--body-background);
+
+  color: var(--body-text);
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  width: 100;
+  max-width: 100%;
+  height: auto;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.link {
+  color: var(--link-color);
+  text-decoration: none;
+
+  transition: color 200ms ease-in-out;
+}
+
+.container {
+  width: 72%;
+  margin: 60px auto;
+}
+
+.weather-block {
+  padding: 10px 40px;
+
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  background-color: var(--weather-block-background);
+}
+
+.city h1 {
+  font-size: 20px;
+  color: var(--body-text-lighter);
+}
+
+.city h1 span {
+  font-size: 32px;
+  font-weight: 700px;
+  color: var(--body-text);
+}
+
+.current-parameters p {
+  font-size: 16px;
+  color: var(--body-text-lighter);
+}
+
+.current-parameters p span {
+  color: var(--body-text);
+}
+
+.current-parameters ul {
+    padding-top: 8px;
+    color: var(--body-text-lighter);
+}
+
+.current-weather {
+  
+}
+
+footer {
+  padding: 4px 40px;
+  color: var(--body-text-lighter);
 }
