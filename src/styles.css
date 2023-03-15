@@ -3,7 +3,7 @@
   --weather-block-background: white;
   --body-text: #212529;
   --body-text-lighter: #66717c;
-  --link-color: #1B74E4;
+  --link-color: #1b74e4;
   --link-color-hoover: #155aaf;
   --border: lightgray;
   /* --weather-icon: #b1c9ed;   */
@@ -66,8 +66,10 @@ img {
 }
 
 .container {
-  width: 768px;
-  margin: 60px 60px;
+  max-width: 768px;
+  margin: 60px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .weather-block {
@@ -126,8 +128,8 @@ img {
   position: relative;
 
   text-align: center;
-  padding-right: 0;
-  padding-left: 0;
+  /* padding-right: 0;
+  padding-left: 0; */
 }
 
 .current-weather i {
@@ -145,7 +147,7 @@ img {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
+
   width: 100%;
 }
 
@@ -158,11 +160,11 @@ img {
 .current-weather .scale {
   text-align: center;
   font-size: 20px;
-  color: var(--body-text-lighter)
+  color: var(--body-text-lighter);
 }
 
-.current-weather .celsius{
-  color: var(--body-text)
+.current-weather .celsius {
+  color: var(--body-text);
 }
 
 .week-weather {
@@ -190,7 +192,6 @@ img {
   padding-bottom: 8px;
   color: var(--body-text);
 }
-
 
 footer {
   padding: 4px 4px;
