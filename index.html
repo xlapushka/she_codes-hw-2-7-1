@@ -30,7 +30,11 @@
 
             <div class="search-engine">
               <ul class="list">
-                <li>change city</li>
+                <li>
+                  <button type="button" class="btn btn-primary">
+                    change city
+                  </button>
+                </li>
                 <li>current position</li>
               </ul>
             </div>
@@ -38,27 +42,78 @@
 
           <div class="col-md-3 current-parameters">
             <p>now is</p>
-            <p><span class="current week-day">Friday</span></p>
-            <p><span class="current-time">12:56</span></p>
+            <p>
+              <span class="current week-day">Friday</span>
+              <span class="current-time">12:56</span>
+            </p>
 
             <ul class="list">
-              <li>precipitation:</li>
-              <li>humidity:</li>
-              <li>wind:</li>
+              <li class="precipitation">precipitation: <span>56%</span></li>
+              <li class="humidity">humidity: <span>32%</span></li>
+              <li class="wind">wind: <span>5m/s</span></li>
             </ul>
           </div>
 
           <div class="col-md-3 current-weather">
-            <div class="weather">
-              <img class="weather-icon" alt="weather-icon" width="50%" />
-              <p>6C</p>
+            <i class="fa-solid fa-cloud-bolt"></i>
+            <div class="temperature">
+              <p class="degree">-24</p>
+              <p class="scale">
+                <span class="celsius"> <sup>o</sup>C </span>
+                |
+                <span class="fahrenheit"> <sup>o</sup>F </span>
+              </p>
             </div>
           </div>
         </section>
 
         <section class="graphics"></section>
 
-        <section class="week-weather"></section>
+        <section class="week-weather">
+          <ul class="list weekly-forecast">
+            <li class="day tomorrow">
+              <p class="week-day">Fri</p>
+              <i class="fa-solid fa-sun"></i>
+              <p class="day-egree">-24<sup>o</sup><span>C</span></p>
+            </li>
+
+            <li class="day 1-after-tomorrow">
+              <p class="week-day">Sat</p>
+              <i class="fa-solid fa-tornado"></i>
+              <p class="degree">-24<sup>o</sup><span>C</span></p>
+            </li>
+
+            <li class="day 2-after-tomorrow">
+              <p class="week-day">Sun</p>
+              <i class="fa-solid fa-cloud"></i>
+              <p class="degree">-24<sup>o</sup><span>C</span></p>
+            </li>
+
+            <li class="day 3-after-tomorrow">
+              <p class="week-day">Mon</p>
+              <i class="fa-solid fa-cloud"></i>
+              <p class="degree">-24<sup>o</sup><span>C</span></p>
+            </li>
+
+            <li class="day 4-after-tomorrow">
+              <p class="week-day">Tue</p>
+              <i class="fa-solid fa-cloud-bolt"></i>
+              <p class="degree">-24<sup>o</sup><span>C</span></p>
+            </li>
+
+            <li class="day 5-after-tomorrow">
+              <p class="week-day">Wed</p>
+              <i class="fa-solid fa-cloud-bolt"></i>
+              <p class="degree">-24<sup>o</sup><span>C</span></p>
+            </li>
+
+            <li class="day 6-after-tomorrow">
+              <p class="week-day">Thu</p>
+              <i class="fa-solid fa-sun"></i>
+              <p class="degree">-24<sup>o</sup><span>C</span></p>
+            </li>
+          </ul>
+        </section>
       </div>
 
       <footer>
@@ -74,7 +129,7 @@
           >
           and is
           <a
-            href="https://github.com/xlapushka"
+            href="https://github.com/xlapushka/she_codes-hw-2-7-1"
             target="_blank"
             rel="noopener nofollow noreferrer"
             class="link"
@@ -83,7 +138,7 @@
           >
           and
           <a
-            href="https://www.facebook.com/xlapushka"
+            href="https://regal-gingersnap-8e91c0.netlify.app"
             target="_blank"
             rel="noopener nofollow noreferrer"
             class="link"
@@ -93,6 +148,11 @@
         </small>
       </footer>
     </div>
+
+    <script
+      src="https://kit.fontawesome.com/f07212d85e.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="./src/script.js"></script>
   </body>
 </html>
