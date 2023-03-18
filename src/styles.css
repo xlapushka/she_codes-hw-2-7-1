@@ -66,7 +66,7 @@ img {
 }
 
 .container {
-  max-width: 768px;
+  max-width: 732px;
   margin: 60px;
   padding-left: 16px;
   padding-right: 16px;
@@ -86,7 +86,7 @@ img {
   color: var(--body-text-lighter);
 }
 
-.city h1 span {
+.city h1 span, .current-parameters #current-city {
   font-size: 32px;
   font-weight: 700px;
   color: var(--body-text);
@@ -104,23 +104,17 @@ img {
   background-color: var(--link-color-hoover);
 }
 
-.current-parameters p {
+.current-parameters {
   font-size: 16px;
   color: var(--body-text-lighter);
-}
-
-.current-parameters p span {
-  color: var(--body-text);
-}
-
-.current-parameters ul {
-  padding-top: 8px;
   line-height: 20px;
-
-  color: var(--body-text-lighter);
 }
 
-.current-parameters ul span {
+.current-parameters .now-is {
+  padding-bottom: 12px;
+}
+
+.current-parameters span {
   color: var(--body-text);
 }
 

@@ -29,9 +29,9 @@
     <div class="container">
       <div class="weather-block">
         <section class="current row">
-          <div class="col-md-6 current-city">
+          <div class="col-md-6 city">
             <div class="city">
-              <h1>in <span>City</span></h1>
+              <h1>in <span id="current-city"></span>, <span id="current-country"></span></h1>
             </div>
 
             <div class="search-engine">
@@ -47,23 +47,26 @@
           </div>
 
           <div class="col-md-3 current-parameters">
-            <p>now is</p>
-            <p>
-              <span class="current week-day">Friday</span>
-              <span class="current-time">12:56</span>
-            </p>
+            <ul class="list now-is">
+              <li>
+                now is 
+              </li>
+              <li>
+                <span id="current-weekday-and-time"></span>
+              </li>
+            </ul>
 
             <ul class="list">
-              <li class="precipitation">precipitation: <span>56%</span></li>
-              <li class="humidity">humidity: <span>32%</span></li>
-              <li class="wind">wind: <span>5m/s</span></li>
+              <!-- <li>precipitation: <span id="current-precipitation"></span><span>%</span></li> -->
+              <li>humidity: <span id="current-humidity"></span><span>%</span></li>
+              <li>wind: <span id="current-wind"></span><span> m/s</span></li>
             </ul>
           </div>
 
           <div class="col-md-3 current-weather">
             <i class="fa-solid fa-cloud-bolt"></i>
             <div class="temperature">
-              <p class="degree">-24</p>
+              <p class="degree" id="current-temp"></p>
               <p class="scale">
                 <span class="celsius"> <sup>o</sup>C </span>
                 |
