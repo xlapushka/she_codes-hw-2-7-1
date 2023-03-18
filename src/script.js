@@ -51,8 +51,8 @@ function displayCurrent(response) {
 }
 
 let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
-let latitude = 40.71;
-let longitude = -74.00;
+let latitude = 2.85;
+let longitude = 34.63;
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayCurrent);

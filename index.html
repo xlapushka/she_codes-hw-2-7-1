@@ -31,7 +31,10 @@
         <section class="current row">
           <div class="col-md-6 city">
             <div class="city">
-              <h1>in <span id="current-city"></span>, <span id="current-country"></span></h1>
+              <h1>
+                in <span id="current-city"></span>,
+                <span id="current-country"></span>
+              </h1>
             </div>
 
             <div class="search-engine">
@@ -48,30 +51,33 @@
 
           <div class="col-md-3 current-parameters">
             <ul class="list now-is">
-              <li>
-                now is 
-              </li>
+              <li>now is:</li>
               <li>
                 <span id="current-weekday-and-time"></span>
+              </li>
+              <li>
+                <small> (last updated) </small>
               </li>
             </ul>
 
             <ul class="list">
               <!-- <li>precipitation: <span id="current-precipitation"></span><span>%</span></li> -->
-              <li>humidity: <span id="current-humidity"></span><span>%</span></li>
+              <li>
+                humidity: <span id="current-humidity"></span><span>%</span>
+              </li>
               <li>wind: <span id="current-wind"></span><span> m/s</span></li>
             </ul>
           </div>
 
           <div class="col-md-3 current-weather">
-            <i class="fa-solid fa-cloud-bolt"></i>
+            <i class="fa-solid fa-rainbow"></i>
+
             <div class="temperature">
-              <p class="degree" id="current-temp"></p>
-              <p class="scale">
+              <p class="col-md-10 degree" id="current-temp"></p>
+              <div class="col-md-2 scale">
                 <span class="celsius"> <sup>o</sup>C </span>
-                |
                 <span class="fahrenheit"> <sup>o</sup>F </span>
-              </p>
+              </div>
             </div>
           </div>
         </section>

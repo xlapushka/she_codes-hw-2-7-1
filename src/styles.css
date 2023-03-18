@@ -3,7 +3,7 @@
   --weather-block-background: white;
   --body-text: #212529;
   --body-text-lighter: #66717c;
-  --link-color: #1b74e4;
+  --link-color: #2d8be2;
   --link-color-hoover: #155aaf;
   --border: lightgray;
   /* --weather-icon: #b1c9ed;   */
@@ -86,7 +86,8 @@ img {
   color: var(--body-text-lighter);
 }
 
-.city h1 span, .current-parameters #current-city {
+.city h1 span,
+.current-parameters #current-city {
   font-size: 32px;
   font-weight: 700px;
   color: var(--body-text);
@@ -105,13 +106,13 @@ img {
 }
 
 .current-parameters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   font-size: 16px;
   color: var(--body-text-lighter);
-  line-height: 20px;
-}
-
-.current-parameters .now-is {
-  padding-bottom: 12px;
+  line-height: calc(18 / 16);
 }
 
 .current-parameters span {
@@ -121,14 +122,13 @@ img {
 .current-weather {
   position: relative;
 
-  text-align: center;
-  /* padding-right: 0;
-  padding-left: 0; */
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .current-weather i {
-  font-size: 120px;
-  text-align: center;
+  font-size: 116px;
   color: var(--weather-icon);
 }
 
@@ -138,23 +138,28 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  padding-left: 25%;
+  padding-right: 25%;
 
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.current-weather .scale {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  font-size: 20px;
+  color: var(--body-text-lighter);
 }
 
 .current-weather .degree {
   text-align: center;
+
   font-size: 56px;
   font-weight: 700px;
-}
-
-.current-weather .scale {
-  text-align: center;
-  font-size: 20px;
-  color: var(--body-text-lighter);
 }
 
 .current-weather .celsius {
