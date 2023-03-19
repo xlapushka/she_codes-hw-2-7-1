@@ -1,3 +1,38 @@
+document.addEventListener("DOMContentLoaded", defaultCity());
+
+function displayCurrent(response) {
+  // console.log(response);
+
+  let tempElement = document.querySelector("#current-temp");
+  tempElement.innerHTML = Math.round(response.data.main.temp);
+
+  let cityElement = document.querySelector("#current-city");
+  cityElement.innerHTML = response.data.name;
+
+  let countryElement = document.querySelector("#current-country");
+  countryElement.innerHTML = response.data.sys.country;
+
+  // let precipitationElement = document.querySelector("#current-precipitation");
+  // precipitationElement.innerHTML = response.data.name;
+
+  let humidityElement = document.querySelector("#current-humidity");
+  humidityElement.innerHTML = response.data.main.humidity;
+
+  let windElement = document.querySelector("#current-wind");
+  let windEl = response.data.wind.speed.toFixed(1);
+  windElement.innerHTML = windEl;
+
+  let weekDayElement = document.querySelector("#current-weekday-and-time");
+  weekDayElement.innerHTML = formatDate(
+    response.data.dt,
+    response.data.timezone
+  );
+
+  let iconElement = document.querySelector("#current-icon");
+  let curtIcon = currentIcon(response.data.weather[0].icon);
+  iconElement.setAttribute("class", `${curtIcon}`);
+}
+
 function formatDate(dt, timezone) {
   let utcSeconds = parseInt(dt, 10) + parseInt(timezone, 10);
   let utsMilliSeconds = utcSeconds * 1000;
@@ -65,42 +100,52 @@ function currentIcon(symbol) {
   }
 }
 
-function displayCurrent(response) {
-  console.log(response);
+// let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
+// let latitude = 0.71;
+// let longitude = 135.0;
+// let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+// axios.get(apiUrl).then(displayCurrent);
 
-  let tempElement = document.querySelector("#current-temp");
-  tempElement.innerHTML = Math.round(response.data.main.temp);
+function defaultCity() {
+  let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
+  let latitude = 50.4333;
+  let longitude = 30.5167;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
-  let cityElement = document.querySelector("#current-city");
-  cityElement.innerHTML = response.data.name;
-
-  let countryElement = document.querySelector("#current-country");
-  countryElement.innerHTML = response.data.sys.country;
-
-  // let precipitationElement = document.querySelector("#current-precipitation");
-  // precipitationElement.innerHTML = response.data.name;
-
-  let humidityElement = document.querySelector("#current-humidity");
-  humidityElement.innerHTML = response.data.main.humidity;
-
-  let windElement = document.querySelector("#current-wind");
-  let windEl = ((response.data.wind.speed * 1000) / 3600).toFixed(1);
-  windElement.innerHTML = windEl;
-
-  let weekDayElement = document.querySelector("#current-weekday-and-time");
-  weekDayElement.innerHTML = formatDate(
-    response.data.dt,
-    response.data.timezone
-  );
-
-  let iconElement = document.querySelector("#current-icon");
-  let curtIcon = currentIcon(response.data.weather[0].icon);
-  iconElement.setAttribute("class", `${curtIcon}`);
+  axios.get(apiUrl).then(displayCurrent);
 }
 
-let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
-let latitude = 0.71;
-let longitude = 135.0;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+function positionByCity() {
+  event.preventDefault();
 
-axios.get(apiUrl).then(displayCurrent);
+  let city = document.querySelector("#current-city");
+  let newCity = document.querySelector("#new-city-input");
+
+  let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newCity.value}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayCurrent);
+
+  return (newCity.value = "");
+}
+
+function positionByCoord(position) {
+  let localLatitude = position.coords.latitude;
+  let localLongitude = position.coords.longitude;
+
+  let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${localLatitude}&lon=${localLongitude}&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(displayCurrent);
+}
+
+function getCurrentPosition() {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(positionByCoord);
+}
+
+let searchCity = document.querySelector("#search-form");
+searchCity.addEventListener("submit", positionByCity);
+
+let currentPosition = document.querySelector("#current-position");
+currentPosition.addEventListener("click", getCurrentPosition);

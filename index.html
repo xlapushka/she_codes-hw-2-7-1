@@ -40,11 +40,23 @@
             <div class="search-engine">
               <ul class="list">
                 <li>
-                  <button type="button" class="btn btn-primary">
-                    change city
-                  </button>
+                  <form id="search-form">
+                    <input type="search"
+                           placeholder=""
+                           class="form-control"
+                           id="new-city-input"
+                           autocomplete="off"
+                    />
+                    <input type="submit"
+                           value="change city" 
+                           class="btn btn-primary"
+                    />
+                  </form>
                 </li>
-                <li>current position</li>
+                <li class="current-location">
+                  <i class="current-position fa-solid fa-location-dot"></i>
+                  <a class="link" id="current-position">current position</a>
+                </li>
               </ul>
             </div>
           </div>

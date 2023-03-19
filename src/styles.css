@@ -84,6 +84,8 @@ img {
 .current .city h1 {
   font-size: 20px;
   color: var(--body-text-lighter);
+
+  padding-bottom: 12px;
 }
 
 .city h1 span,
@@ -93,7 +95,15 @@ img {
   color: var(--body-text);
 }
 
+#search-form {
+  display: flex;
+  flex-direction: row;
+
+  padding-bottom: 2px;
+}
+
 .btn-primary {
+  margin-left: 8px;
   border-color: var(--link-color);
   background-color: var(--link-color);
 
@@ -103,6 +113,19 @@ img {
 .btn-primary:is(:hover, :focus) {
   border-color: var(--link-color-hoover);
   background-color: var(--link-color-hoover);
+}
+
+.current .search-engine .current-location,
+.current .search-engine .current-location .link {
+  color: var(--link-color);
+  cursor: pointer;
+
+  transition: color 200ms ease-in-out;
+}
+
+.current .search-engine .current-location:is(:hover, :focus),
+.current .search-engine .current-location .link:is(:hover, :focus) {
+  color: var(--link-color-hoover);
 }
 
 .current-parameters {
