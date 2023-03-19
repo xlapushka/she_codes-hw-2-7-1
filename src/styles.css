@@ -176,7 +176,6 @@ img {
   justify-content: space-between;
 
   font-size: 20px;
-  color: var(--body-text-lighter);
 }
 
 .current-weather .degree {
@@ -186,7 +185,14 @@ img {
   font-weight: 700px;
 }
 
-.current-weather .celsius {
+.current-weather .link {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--body-text-lighter);
+}
+
+.current-weather .active {
   color: var(--link-color);
 }
 

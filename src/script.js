@@ -1,10 +1,16 @@
 document.addEventListener("DOMContentLoaded", defaultCity());
 
+// ==================== all current params =================
+
 function displayCurrent(response) {
   // console.log(response);
 
   let tempElement = document.querySelector("#current-temp");
   tempElement.innerHTML = Math.round(response.data.main.temp);
+
+  celsiusTemp = Math.round(response.data.main.temp);
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.name;
@@ -33,6 +39,8 @@ function displayCurrent(response) {
   iconElement.setAttribute("class", `${curtIcon}`);
 }
 
+// ==================== current day and time =================
+
 function formatDate(dt, timezone) {
   let utcSeconds = parseInt(dt, 10) + parseInt(timezone, 10);
   let utsMilliSeconds = utcSeconds * 1000;
@@ -57,6 +65,8 @@ function formatDate(dt, timezone) {
   // console.log(`${day} ${doubleDigitsHours}:${doubleDigitsMinutes}`);
   // return `${day} ${doubleDigitsHours}:${doubleDigitsMinutes}`;
 }
+
+// ==================== main icon =================
 
 function currentIcon(symbol) {
   switch (symbol) {
@@ -106,6 +116,8 @@ function currentIcon(symbol) {
 // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 // axios.get(apiUrl).then(displayCurrent);
 
+// ==================== defult city =================
+
 function defaultCity() {
   let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
   let latitude = 50.4333;
@@ -114,6 +126,8 @@ function defaultCity() {
 
   axios.get(apiUrl).then(displayCurrent);
 }
+
+// ==================== change city by current-position =================
 
 function positionByCity() {
   event.preventDefault();
@@ -144,8 +158,41 @@ function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(positionByCoord);
 }
 
+// =============================================================
+
 let searchCity = document.querySelector("#search-form");
 searchCity.addEventListener("submit", positionByCity);
 
 let currentPosition = document.querySelector("#current-position");
 currentPosition.addEventListener("click", getCurrentPosition);
+
+// ========================= celsius / fahrenheit temp ===================
+
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+
+  let currentTemp = document.querySelector("#current-temp");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  currentTemp.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+
+  let currentTemp = document.querySelector("#current-temp");
+  currentTemp.innerHTML = celsiusTemp;
+}
+
+let celsiusTemp = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
