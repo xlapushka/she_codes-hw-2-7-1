@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", defaultCity());
 
 // ==================== all current params =================
@@ -37,9 +39,48 @@ function displayCurrent(response) {
   let iconElement = document.querySelector("#current-icon");
   let curtIcon = currentIcon(response.data.weather[0].icon);
   iconElement.setAttribute("class", `${curtIcon}`);
+
+  let positionLat = response.data.coord.lat;
+  let positionLon = response.data.coord.lon;
+  getforecastByLatAndLog(positionLat, positionLon);
 }
 
-// ==================== current day and time =================
+// ==================== week weather =================
+
+function displayForecast(response) {
+  // console.log(response.data);
+
+  let forecastElement = document.querySelector("#week-weather");
+  let forecastHTML = `<div class="day-row">`;
+  let forecast = response.data.daily;
+
+  forecast.forEach(function (forecastDay, index) {
+    let currentIcn = currentIcon(forecastDay.weather[0].icon);
+
+    if (index < 7) {
+      
+      forecastHTML += `
+            <div class="weather-forecast">
+
+                <p class="week-day">${formatWeekDay(forecastDay.dt)}</p>
+                <i id="current-forecast-icon" class="${currentIcn}"></i>
+                <p class="day-degree">
+                  <span class="day-temp-max">${Math.round(
+                    forecastDay.temp.max
+                  )}</span><sup>o</sup>
+                  <span class="day-temp-min">${Math.round(
+                    forecastDay.temp.min
+                  )}</span><sup>o</sup>
+                </p>
+            </div>`;
+    }
+  });
+
+  forecastHTML += `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+// ==================== day and time =================
 
 function formatDate(dt, timezone) {
   let utcSeconds = parseInt(dt, 10) + parseInt(timezone, 10);
@@ -66,7 +107,23 @@ function formatDate(dt, timezone) {
   // return `${day} ${doubleDigitsHours}:${doubleDigitsMinutes}`;
 }
 
-// ==================== main icon =================
+function formatWeekDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
+// ==================== icons =================
 
 function currentIcon(symbol) {
   switch (symbol) {
@@ -116,7 +173,7 @@ function currentIcon(symbol) {
 // let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 // axios.get(apiUrl).then(displayCurrent);
 
-// ==================== defult city =================
+// ==================== default city =================
 
 function defaultCity() {
   let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
@@ -127,12 +184,11 @@ function defaultCity() {
   axios.get(apiUrl).then(displayCurrent);
 }
 
-// ==================== change city by current-position =================
+// ==================== change city by .. =================
 
 function positionByCity() {
   event.preventDefault();
 
-  let city = document.querySelector("#current-city");
   let newCity = document.querySelector("#new-city-input");
 
   let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
@@ -149,13 +205,19 @@ function positionByCoord(position) {
 
   let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${localLatitude}&lon=${localLongitude}&units=metric&appid=${apiKey}`;
-
   axios.get(apiUrl).then(displayCurrent);
 }
 
 function getCurrentPosition() {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(positionByCoord);
+}
+
+function getforecastByLatAndLog(positionLat, positionLon) {
+  let apiKey = "ce144f0cf51fa43f03431f0488a36728";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${positionLat}&lon=${positionLon}&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 // =============================================================
@@ -196,3 +258,29 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+// function accum(string) {
+
+//   let st = string.toLowerCase().split("");
+//   let arr = [];
+
+//   for (let x = 0; x < st.length; x++) {
+
+//     let s = st[x].toUpperCase();
+
+//     while (s.length <= x) {
+//       s = s + st[x];
+//     }
+
+//     arr.push(s);
+//   }
+
+//   return arr.join('-')
+// };
+
+// console.log(accum("aBCdEFGh"));
+// console.log(accum("ZpglnRxqenU"));
+// console.log(accum("NyffsGeyylB"));
+// console.log(accum("MjtkuBovqrU"));
+// console.log(accum("EvidjUnokmM"));
+// console.log(accum("HbideVbxncC"));
