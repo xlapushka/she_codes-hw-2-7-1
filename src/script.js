@@ -58,20 +58,19 @@ function displayForecast(response) {
     let currentIcn = currentIcon(forecastDay.weather[0].icon);
 
     if (index < 7) {
-
-      if (index === 0) {        
+      if (index === 0) {
         forecastHTML += `
             <div class="weather-forecast">
 
                 <p class="week-day active" id="today">Today</p>
                 <i id="current-forecast-icon" class="${currentIcn}"></i>
                 <p class="day-degree">
-                  <span class="day-temp-max">${Math.round(
-                    forecastDay.temp.max
-                  )}</span><sup>o</sup>
-                  <span class="day-temp-min">${Math.round(
-                    forecastDay.temp.min
-                  )}</span><sup>o</sup>
+                  <span id="max-temp-index-${index}" class="day-temp-max">${Math.round(
+          forecastDay.temp.max
+        )}</span><sup>o</sup>
+                  <span id="min-temp-index-${index}" class="day-temp-min">${Math.round(
+          forecastDay.temp.min
+        )}</span><sup>o</sup>
                 </p>
             </div>`;
       } else {
@@ -81,15 +80,15 @@ function displayForecast(response) {
                 <p class="week-day">${formatWeekDay(forecastDay.dt)}</p>
                 <i id="current-forecast-icon" class="${currentIcn}"></i>
                 <p class="day-degree">
-                  <span class="day-temp-max">${Math.round(
-                    forecastDay.temp.max
-                  )}</span><sup>o</sup>
-                  <span class="day-temp-min">${Math.round(
-                    forecastDay.temp.min
-                  )}</span><sup>o</sup>
+                  <span id="max-temp-index-${index}" class="day-temp-max">${Math.round(
+          forecastDay.temp.max
+        )}</span><sup>o</sup>
+                  <span id="min-temp-index-${index}" class="day-temp-min">${Math.round(
+          forecastDay.temp.min
+        )}</span><sup>o</sup>
                 </p>
             </div>`;
-      } 
+      }
     }
   });
 
@@ -256,6 +255,28 @@ function displayFahrenheitTemp(event) {
   let currentTemp = document.querySelector("#current-temp");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   currentTemp.innerHTML = Math.round(fahrenheitTemp);
+
+  let tempMaxWFs = document.querySelectorAll(".day-temp-max");
+  let newTempMaxWF = [];
+  let tempMinWFs = document.querySelectorAll(".day-temp-min");
+  let newTempMinWF = [];
+
+  for (const tempMaxWF of tempMaxWFs) {
+    newTempMaxWF.push(Number(tempMaxWF.textContent));
+  }
+  for (const tempMinWF of tempMinWFs) {
+    newTempMinWF.push(Number(tempMinWF.textContent));
+  }
+
+  for (let i = 0; i < 7; i++) {
+    let maxTemp = document.querySelector(`#max-temp-index-${i}`);
+    let maxFahrenheitTemp = (newTempMaxWF[i] * 9) / 5 + 32;
+    maxTemp.innerHTML = Math.round(maxFahrenheitTemp);
+
+    let minTemp = document.querySelector(`#min-temp-index-${i}`);
+    let minFahrenheitTemp = (newTempMinWF[i] * 9) / 5 + 32;
+    minTemp.innerHTML = Math.round(minFahrenheitTemp);
+  }
 }
 
 function displayCelsiusTemp(event) {

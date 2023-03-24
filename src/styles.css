@@ -194,6 +194,7 @@ img {
 
 .current-weather .active {
   color: var(--link-color);
+  font-weight: 700;
 }
 
 .week-weather {
@@ -205,7 +206,6 @@ img {
 
 .week-weather .day-row {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -230,7 +230,7 @@ img {
 
 .week-weather .weather-forecast .day-temp-max {
   color: var(--body-text);
-  opacity: .85;
+  opacity: 0.85;
 }
 
 footer {
