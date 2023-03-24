@@ -58,8 +58,24 @@ function displayForecast(response) {
     let currentIcn = currentIcon(forecastDay.weather[0].icon);
 
     if (index < 7) {
-      
-      forecastHTML += `
+
+      if (index === 0) {        
+        forecastHTML += `
+            <div class="weather-forecast">
+
+                <p class="week-day active" id="today">Today</p>
+                <i id="current-forecast-icon" class="${currentIcn}"></i>
+                <p class="day-degree">
+                  <span class="day-temp-max">${Math.round(
+                    forecastDay.temp.max
+                  )}</span><sup>o</sup>
+                  <span class="day-temp-min">${Math.round(
+                    forecastDay.temp.min
+                  )}</span><sup>o</sup>
+                </p>
+            </div>`;
+      } else {
+        forecastHTML += `
             <div class="weather-forecast">
 
                 <p class="week-day">${formatWeekDay(forecastDay.dt)}</p>
@@ -73,6 +89,7 @@ function displayForecast(response) {
                   )}</span><sup>o</sup>
                 </p>
             </div>`;
+      } 
     }
   });
 

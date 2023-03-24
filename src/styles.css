@@ -223,6 +223,11 @@ img {
   color: var(--body-text);
 }
 
+.week-weather .weather-forecast .week-day.active {
+  color: var(--link-color);
+  font-weight: 700;
+}
+
 .week-weather .weather-forecast .day-temp-max {
   color: var(--body-text);
   opacity: .85;
