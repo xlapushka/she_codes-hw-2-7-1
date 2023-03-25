@@ -288,27 +288,12 @@ function displayCelsiusTemp(event) {
   let currentTemp = document.querySelector("#current-temp");
   currentTemp.innerHTML = celsiusTemp;
 
-  let tempMaxWFs = document.querySelectorAll(".day-temp-max");
-  let newTempMaxWF = [];
-  let tempMinWFs = document.querySelectorAll(".day-temp-min");
-  let newTempMinWF = [];
+  let upgradeAllByCityName = document.querySelector("#current-city").textContent;
 
-  for (const tempMaxWF of tempMaxWFs) {
-    newTempMaxWF.push(Number(tempMaxWF.textContent));
-  }
-  for (const tempMinWF of tempMinWFs) {
-    newTempMinWF.push(Number(tempMinWF.textContent));
-  }
+  let apiKey = "062a09b2ac32c51fd9e8b024e2f69734";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${upgradeAllByCityName}&appid=${apiKey}&units=metric`;
 
-  for (let i = 0; i < 7; i++) {
-    let maxTemp = document.querySelector(`#max-temp-index-${i}`);
-    let maxCelsiusTemp = ((newTempMaxWF[i] - 32) * 5) / 9;
-    maxTemp.innerHTML = Math.round(maxCelsiusTemp);
-
-    let minTemp = document.querySelector(`#min-temp-index-${i}`);
-    let minCelsiusTemp = ((newTempMinWF[i] - 32) * 5) / 9;
-    minTemp.innerHTML = Math.round(minCelsiusTemp);
-  }
+  axios.get(apiUrl).then(displayCurrent);
 }
 
 let celsiusTemp = null;
