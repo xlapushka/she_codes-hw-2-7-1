@@ -207,9 +207,8 @@ img {
 .week-weather .day-row {
   display: flex;
   justify-content: space-between;
-  /* align-content: flex-start; */
   flex-wrap: wrap;
-  
+  row-gap: 24px;
 }
 
 .week-weather .weather-forecast {
